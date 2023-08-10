@@ -272,7 +272,7 @@
             const subMenu = $('#section2 .sub-menu');
             const materialIcons = $('#section2  .select-btn .material-icons');
             const heightRate = 0.884545392;
-            let n = slide.length;
+            let n = slide.length-2;
 
             // 터치스와이프
             let touchStart = null;
@@ -316,8 +316,8 @@
                             pageBtn.eq(i).css({display: 'block'}); // 10개보임
                         }
 
-                        if(cnt>7){
-                            cnt=7;
+                        if(cnt>n-1){
+                            cnt=n-1;
                         }
                     
                     }
