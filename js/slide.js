@@ -272,6 +272,7 @@
             const subMenu = $('#section2 .sub-menu');
             const materialIcons = $('#section2  .select-btn .material-icons');
             const heightRate = 0.884545392;
+            let n = slide.length;
 
             // 터치스와이프
             let touchStart = null;
@@ -283,7 +284,7 @@
             let dragEnd = null;
             let mDown = false;
             let winW = $(window).innerWidth(); // 창너비=> 슬라이드1개의 너비
-            let sizeX = 400;  // 드래그 길이
+            let sizeX = 100;  // 드래그 길이
             let offsetL =   slideWrap.offset().left;  // 318 
             let slideWidth;
             // slideWrap.offset().left 좌측 좌표값
@@ -299,9 +300,26 @@
                     // 1280 이하에서는 슬라이드 1개
                     if(winW > 920){
                         slideWidth = (section2Container.innerWidth()-0+20+20) / 3;
+                        n = slide.length-2; // 8개
+                        console.log(n);
+                        pageBtn.css({display: 'none'});
+                        for(let i=0; i<n; i++){
+                            pageBtn.eq(i).css({display: 'block'}); // 8개보임
+                        }
+                        cnt=0;
                     }
                     else{
                         slideWidth = (section2Container.innerWidth()-0+20+20) / 1;
+                        n = slide.length; // 10개
+                        pageBtn.css({display: 'none'});
+                        for(let i=0; i<n; i++){
+                            pageBtn.eq(i).css({display: 'block'}); // 10개보임
+                        }
+
+                        if(cnt>7){
+                            cnt=7;
+                        }
+                    
                     }
                 }
                 else{ // 1642 초과 (같다)
@@ -311,6 +329,7 @@
                 slide.css({width: slideWidth, height: slideWidth*heightRate});
                 slideH3.css({fontSize: slideWidth*0.084758364});
                 slideH4.css({fontSize: slideWidth*0.035687732});
+
                 mainSlide();
             }
             $(window).resize(function(){
@@ -429,7 +448,7 @@
             // 다음카운트함수
             function nextCount(){
                 cnt++;
-                if(cnt>7) {cnt=7};
+                if(cnt>n-1) {cnt=n-1};
                 mainSlide();
             }
 
@@ -447,7 +466,6 @@
                 $(this).on({
                     click(e){
                         e.preventDefault();
-                        console.log(idx);
                         cnt=idx;
                         mainSlide();
                     }

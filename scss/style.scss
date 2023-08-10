@@ -447,12 +447,6 @@
                                 overflow: hidden;
                                 transform: scale(0.7);
                                 transition: all 0.3s ease-in-out;
-                                &:nth-child(9){
-                                    display: none;
-                                }
-                                &:nth-child(10){
-                                    display: none;
-                                }
                                 &.on {
                                     background: rgba(255,255,255, 0);
                                     border:2px solid rgba(255,255,255, 1);
@@ -508,19 +502,6 @@
                                 
                             }
                           
-                        }
-                        @media all and (max-width: 920px) {
-                            .page-btn-box {
-                                a.page-btn {
-                                    &:nth-child(9){
-                                        display: block;
-                                    }
-                                    &:nth-child(10){
-                                        display: block;
-                                    }
-                                }
-                            }
-                            
                         }
                         @media all and (max-width: 500px) {
                             .page-btn-box {
